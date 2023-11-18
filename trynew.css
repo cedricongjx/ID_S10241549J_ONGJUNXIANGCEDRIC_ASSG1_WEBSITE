@@ -1,0 +1,294 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrollbar due to any potential overflow */
+  }
+  
+  .image-container {
+    height: 100vh; /* Set the height of each container to be 100% of the viewport height */
+    background-size: cover; /* Cover the entire width and height of the container */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+    position: relative; /* To position the navbar absolutely within this container */
+  }
+  
+  /*  navbar styles */
+  .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute; /* Changed from relative to absolute */
+      padding: 1rem 0;
+      margin-top: 50px; /* This lowers the navbar from the top */
+      width: 100%; /* Ensure the navbar spans the width of the container */
+      z-index: 3; /* Above the image container */
+  }
+  
+  .navbar::before,
+  .navbar::after {
+      content: '';
+      background: white;
+      height: 2px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+  }
+  
+  .navbar::before {
+      top: 0;
+      width: 80%;
+  }
+  
+  .navbar::after {
+      bottom: 0;
+      width: 80%;
+  }
+  
+  .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      color: white;
+  }
+  
+  .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      padding: 0 40px;
+  }
+  
+  .nav-links li a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      font-size: 1.2rem;
+      transition: color 0.3s;
+  }
+  
+  .nav-links li a:hover {
+      color: #ddd;
+  }
+
+/* styling for word keshi */
+  .centered-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; /* Choose a color that makes the text stand out on your image */
+    font-size: 9rem; /* Adjust size as needed */
+    font-weight: bold;
+    z-index: 2; /* Ensure the text appears above the background image */
+    text-align: left;
+    
+  }
+
+  /*for videos*/
+
+  .image-container {
+    /* ... (existing styles) ... */
+    position: relative; /* Needed for absolute positioning of children */
+  }
+  
+  .video-container {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Offset the top positioning */
+    width: 560px; /* Width of the iframe */
+    height: 315px; /* Height of the iframe */
+  }
+  
+  .video-container.left {
+    left: 0; /* Align to the left */
+    margin-left: 10px; /* Add some space from the left edge */
+    width: 280px; /* Half of the original width to maintain the aspect ratio */
+  height: 157.5px;
+  }
+  
+  .video-container.right {
+    right: 0; /* Align to the right */
+    margin-right: 10px; /* Add some space from the right edge */
+  }
+  
+  /* Make the iframe responsive */
+  @media (max-width: 600px) {
+    .video-container {
+      width: 100%;
+      height: auto;
+      padding: 0 10px; /* Adjust padding for smaller screens */
+    }
+  
+    .video-container iframe {
+      width: 100%;
+      height: auto;
+    }
+  
+    .video-container.left, .video-container.right {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  /* Styling of word Music Video */ 
+  .section-title {
+    position: absolute;
+    top: 50px; /* Lower the title by increasing the top value */
+    left: 20px; /* Add more padding from the left edge */
+    color: rgb(207, 33, 33); /* Use the same color as the "KESHI" text for consistency */
+    font-size: 5rem; /* 50% larger than the "KESHI" text if it was 5rem */
+    font-weight: bold; /* Assuming "KESHI" is also bold */
+    z-index: 3; /* Ensure the text appears above the background image */
+    padding-left: 10px; /* Extra padding from the left edge */
+  }
+  
+
+
+/* Style for the fetured albulm */
+.album-title {
+    position: absolute;
+    top: 40px; /* This adds some space from the top edge */
+    left: 50%; /* Centers the title horizontally */
+    transform: translateX(-50%); /* Adjusts horizontal centering taking into account the element's width */
+    color: white; /* Adjust the color as needed */
+    font-size: 4rem; /* Adjust the size as needed */
+    z-index: 2; /* Ensure the text appears above the background image */
+    padding-top: 10px; /* Extra padding from the top, if needed */
+    text-align: center; /* Ensure the text within the div is centered */
+  }
+  
+/* style for albulm featured pictures */
+
+
+.albums-container {
+    display: flex;
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically in the viewport */
+    flex-wrap: wrap; /* Allow the items to wrap */
+    padding: 20px; /* Padding inside the container */
+    gap: 20px; /* Space between the albums */
+    height: 100vh; /* Full height of the viewport */
+}
+
+.album {
+    flex: 0 1 calc(33.33% - 40px); /* Flex grow, shrink, and basis */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center-align the album content */
+    /* Removed margin-bottom as it is not needed with center alignment */
+}
+
+.album img {
+    width: 80%; /* Width of the image adjusted to preference */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}
+
+.album-info {
+    margin-top: 8px; /* Space between image and title */
+    font-size: 1rem; /* Text size */
+    color: #fff; /* Text color, assuming white is desired */
+    text-align: center; /* Center-align the text */
+}
+
+/*style for 4th page*/
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* or any other size you wish */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.centered-image {
+  background-image: url('keshi_hellheaven_concert_singa_1664796505_4d6a6ca1_progressive.jpg');
+  background-size: contain; /* or 'cover' depending on how you want to handle the image */
+  background-repeat: no-repeat;
+  background-position: left center;
+  position: absolute;
+  top: 50%;
+  left: 17%;
+  transform: translateY(-50%);
+  width: 65%; /* or the width of the image */
+  height: 50%; /* or the height of the image */
+  padding: 20px; /* adjust as needed for the desired amount of padding */
+}
+
+
+
+
+
+.buy-ticket-button {
+  /* Other styles */
+  position: absolute;
+  bottom: 29%;
+  left: 70%;
+  transform: translateX(-50%);
+  padding: 20px 50px;
+  font-size: 2rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+
+  /* Add font family */
+  font-family: 'Roboto', sans-serif;
+}
+
+.buy-ticket-button:hover {
+  background-color: #0056b3;
+}
+
+
+
+/* Countdown timer */
+.image-container.with-countdown {
+  position: relative;
+  height: 100vh; /* Full viewport height */
+  background-size: cover; /* Cover the entire area */
+  background-position: center; /* Center the background */
+}
+
+.image-container.with-countdown .countdown {
+  position: absolute;
+  right: 10%; /* Adjust for horizontal positioning */
+  top: 50%; /* Vertical center */
+  transform: translateY(-50%); /* Vertical center adjustment */
+  display: flex;
+  flex-direction: row; /* Align countdown elements horizontally */
+  align-items: center;
+}
+
+.image-container.with-countdown .countdown .time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 40px; /* Horizontal spacing between each time unit */
+}
+
+.image-container.with-countdown .countdown .number {
+  font-size: 90px; /* Large font size for countdown numbers */
+  font-weight: bold;
+  color: rgb(17, 17, 19);
+}
+
+.image-container.with-countdown .countdown .label {
+  font-size: 20px; /* Font size for labels (days, hours, etc.) */
+  color: #c4b6b6;
+}
+
+
+
+.custom-background {
+  background-image: url('blackbg.svg'); /* Path to your uploaded image */
+  height: 100vh; /* Set the height of the section */
+  background-size: cover; /* Cover the entire width and height of the section */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Do not repeat the background image */
+}
+
