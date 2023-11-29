@@ -137,18 +137,18 @@ html, body {
 
 
 /* styling for word keshi */
-  .centered-title {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white; 
-    font-size: 9rem; 
-    font-weight: bold;
-    z-index: 2; /* Ensure  text appears above the background image */
-    text-align: left;
+.centered-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white; 
+  font-size: 9rem; 
+  font-weight: bold;
+  z-index: 2; /* Ensure  text appears above the background image */
+  text-align: left;
     
-  }
+}
 
 /* Media query for smaller screens */
 @media screen and (max-width: 768px) { 
@@ -455,7 +455,7 @@ html, body {
 
 
 
-/* showcase merch*/
+/* showcase merch items - not actual store*/
 .merchstore-background {
   background-color: white;
   padding: 20px;
@@ -793,6 +793,7 @@ html, body {
   height: auto; 
   object-fit: contain; 
 }
+
 
 /*testing for cart*/
 .add-to-cart-btn {
