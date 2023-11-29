@@ -571,7 +571,7 @@ html, body {
   .keshi-title {
       font-size: 4rem; 
       right: 5%; 
-      top: 40%; /
+      top: 40%; 
   }
 }
 
@@ -614,7 +614,7 @@ html, body {
   height: auto; 
   max-width: 90%; 
   box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.1);
-  aspect-ratio: 16 / 9; /
+  aspect-ratio: 16 / 9; 
 }
 
 /* CSS for Mobile Devices */
