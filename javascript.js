@@ -1,24 +1,28 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Slider functionality
+    document.getElementById('hamburger').addEventListener('click', function() {
+        document.getElementById('nav-links').classList.toggle('show');
+    });
+
+    // Slider functionality - ensure elements with these IDs exist
     const albumsContainer = document.getElementById('albumsContainer');
     const slideLeft = document.getElementById('slideLeft');
     const slideRight = document.getElementById('slideRight');
 
-    slideLeft.addEventListener('click', () => {
-        albumsContainer.scrollLeft -= albumsContainer.offsetWidth;
-    });
+    if (slideLeft && slideRight && albumsContainer) {
+        slideLeft.addEventListener('click', () => {
+            albumsContainer.scrollLeft -= albumsContainer.offsetWidth;
+        });
 
-    slideRight.addEventListener('click', () => {
-        albumsContainer.scrollLeft += albumsContainer.offsetWidth;
-    });
+        slideRight.addEventListener('click', () => {
+            albumsContainer.scrollLeft += albumsContainer.offsetWidth;
+        });
+    }
 
-    // count down timer
-    var countDownDate = new Date("Nov 30, 2023 23:59:59").getTime();
-
+    // Count down timer
+    var countDownDate = new Date("Nov 30, 2024 23:59:59").getTime();
     var countdownTimer = setInterval(function() {
         var now = new Date().getTime();
         var distance = countDownDate - now;
-        
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -37,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("seconds").innerHTML = "";
         }
     }, 1000);
+
     // Enhanced Add to Cart functionality
     const cartItemsContainer = document.querySelector('.cart-items');
     const totalElement = document.querySelector('.total');
@@ -93,9 +98,5 @@ document.addEventListener("DOMContentLoaded", function() {
             addToCart(itemName, itemPrice, itemImg);
         });
     });
-   
-
-   
 });
-
 
