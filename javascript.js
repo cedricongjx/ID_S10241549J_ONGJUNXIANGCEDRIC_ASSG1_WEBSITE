@@ -37,22 +37,63 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("seconds").innerHTML = "";
         }
     }, 1000);
-    /*ticket drop down*/
-    const buyTicketButton = document.getElementById("buyTicketButton");
-    const ticketDropdown = document.getElementById("ticketDropdown");
+    // Enhanced Add to Cart functionality
+    const cartItemsContainer = document.querySelector('.cart-items');
+    const totalElement = document.querySelector('.total');
+    let total = 0;
 
-    buyTicketButton.addEventListener('click', () => {
-        ticketDropdown.classList.toggle("show");
-    });
+    function addToCart(itemName, itemPrice, itemImg) {
+        let existingItem = cartItemsContainer.querySelector(`.cart-item[data-name="${itemName}"]`);
+        if (existingItem) {
+            let quantity = existingItem.querySelector('.quantity');
+            quantity.textContent = parseInt(quantity.textContent) + 1;
+        } else {
+            const newItem = document.createElement('div');
+            newItem.classList.add('cart-item');
+            newItem.setAttribute('data-name', itemName);
+            newItem.innerHTML = `
+                <img src="${itemImg}" alt="${itemName}" class="cart-item-img">
+                <span class="item-name">${itemName}</span>
+                <span class="item-price">${itemPrice}</span>
+                <span class="quantity">1</span>
+                <button class="remove-item">Remove</button>
+            `;
+            cartItemsContainer.appendChild(newItem);
 
-    // Click outside the dropdown to close
-    window.addEventListener('click', function(event) {
-        if (!event.target.matches('.buy-ticket-button')) {
-            if (ticketDropdown.classList.contains('show')) {
-                ticketDropdown.classList.remove('show');
-            }
+            newItem.querySelector('.remove-item').addEventListener('click', function() {
+                removeItem(newItem, itemPrice);
+            });
         }
+
+        updateTotal(itemPrice, 1); // 1 for addition
+    }
+
+    function updateTotal(itemPrice, quantity) {
+        const priceValue = parseFloat(itemPrice.replace('$', ''));
+        total += priceValue * quantity;
+        totalElement.textContent = `Total: $${total.toFixed(2)}`;
+    }
+
+    function removeItem(itemElement, itemPrice) {
+        updateTotal(itemPrice, -1); // -1 for subtraction
+        let quantityElem = itemElement.querySelector('.quantity');
+        let quantity = parseInt(quantityElem.textContent);
+        if (quantity > 1) {
+            quantityElem.textContent = quantity - 1;
+        } else {
+            cartItemsContainer.removeChild(itemElement);
+        }
+    }
+
+    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const itemName = button.getAttribute('data-name');
+            const itemPrice = button.getAttribute('data-price');
+            const itemImg = button.closest('.merch-item').querySelector('img').src; // Assuming the image is within the merch-item
+            addToCart(itemName, itemPrice, itemImg);
+        });
     });
+   
 
    
 });
