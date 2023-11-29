@@ -18,12 +18,12 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute; /* Keep as absolute */
-  top: 50px; /* Adjusted to be 50px from the top of its parent */
+  position: absolute; 
+  top: 50px; 
   padding: 1rem 0;
-  width: 100%; /* Ensure the navbar spans the width of the container */
-  z-index: 3; /* Above the image container */
-  /* other styles... */
+  width: 100%; 
+  z-index: 3; 
+ 
 }
 
   
@@ -74,12 +74,66 @@ html, body {
 }
 
 .nav-links .active {
-    color: #ff4757; /* Bright color for the active page */
-    font-weight: bold; /* Makes the active link bolder */
-    border-bottom: 2px solid #ff4757; /* Underline effect */
-    transform: scale(1.15); /* Slightly enlarges the active link */
-    cursor: default; /* Changes the cursor to default as it's the current page */
+    color: #ff4757; 
+    font-weight: bold; 
+    border-bottom: 2px solid #ff4757; 
+    transform: scale(1.15); 
+    cursor: default; 
 }
+
+/*nav bar for mobile smaller devices*/
+.hamburger {
+  display: none; 
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+@media only screen and (max-width: 768px) {
+  .hamburger {
+      display: flex; /* Show the hamburger menu */
+  }
+
+  .nav-links {
+      display: none; /* Hide the nav links */
+      flex-direction: column; /* Stack them vertically */
+      align-items: center;
+      width: 100%; /* Full width */
+      position: absolute;
+      top: 60px; /* Below the navbar */
+      left: 0;
+      background-color: #333; 
+  }
+
+  .nav-links a {
+      padding: 10px;
+      color: white;
+      text-decoration: none;
+      display: block; 
+  }
+
+  .nav-links a:hover {
+      background-color: #555; /* Hover effect */
+  }
+}
+
+.show {
+  display: flex;
+}
+/*end of nav bar for mobile*/
+
 
 
 /* styling for word keshi */
@@ -88,22 +142,31 @@ html, body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white; /* Choose a color that makes the text stand out on your image */
-    font-size: 9rem; /* Adjust size as needed */
+    color: white; 
+    font-size: 9rem; 
     font-weight: bold;
-    z-index: 2; /* Ensure the text appears above the background image */
+    z-index: 2; /* Ensure  text appears above the background image */
     text-align: left;
     
   }
 
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) { 
+  .centered-title {
+      font-size: 8vw; /* Smaller, relative size for smaller screens */
+      max-width: 50%; 
+      overflow: hidden; 
+      white-space: nowrap; 
+  }
+}
+
   /*for videos*/
   iframe {
-    border: 1px solid black; /* Example: black border, 1px thick */
-    /* Additional iframe styling */
+    border: 1px solid black; 
 }
 
   .video-image-container {
-    height: 100vh; /* Set the height of each container to be 100% of the viewport height */
+    height: 100vh; /* Set the height of container to be 100% of the viewport height */
     background-size: cover; /* Cover the entire width and height of the container */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat; /* Do not repeat the background image */
@@ -113,7 +176,7 @@ html, body {
   .video-container {
     position: absolute;
     top: 50%; /* Center vertically */
-    transform: translateY(-50%); /* Offset the top positioning */
+    transform: translateY(-50%); 
     width: 560px; /* Width of the iframe */
     height: 315px; /* Height of the iframe */
   }
@@ -121,7 +184,7 @@ html, body {
   .video-container.left {
     left: 0; /* Align to the left */
     margin-left: 10px; /* Add some space from the left edge */
-    width: 280px; /* Half of the original width to maintain the aspect ratio */
+    width: 280px; 
   height: 157.5px;
   }
   
@@ -149,27 +212,67 @@ html, body {
     }
   }
 
+ /* styling for videos + "MUSIC VIDEO on smaller pages*/
+ @media screen and (max-width: 768px) {
+  .video-image-section-title {
+      font-size: 4vw; 
+      max-width: 33%; 
+      margin: 0 auto; /* Center the title */
+      text-align: center;
+      padding: 10px 20px; /* Adds padding above, below, and on the sides */
+  }
+}
+
+/*for video*/
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  /* Hide one of the video containers */
+  .video-container.right {
+      display: none;
+  }
+
+  /* Adjust the size and padding of the other video container */
+  .video-container.left {
+      width: 60%; /* Smaller than the full width to allow padding */
+      padding: 0 10%; /* Padding on right and left */
+      margin: 0 auto; 
+      position: relative;
+      padding-bottom: 45%; 
+      height: 0;
+  }
+
+  .video-container.left iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+  }
+}
+
+
   /* Styling of word Music Video */ 
   .video-image-section-title {
     position: absolute;
-    top: 50px; /* Lower the title by increasing the top value */
-    left: 20px; /* Add more padding from the left edge */
-    color: rgb(207, 33, 33); /* Use the same color as the "KESHI" text for consistency */
-    font-size: 5rem; /* 50% larger than the "KESHI" text if it was 5rem */
-    font-weight: bold; /* Assuming "KESHI" is also bold */
-    z-index: 3; /* Ensure the text appears above the background image */
-    padding-left: 10px; /* Extra padding from the left edge */
+    top: 50px;
+    left: 20px; 
+    color: rgb(207, 33, 33); 
+    font-size: 5rem; 
+    font-weight: bold; 
+    z-index: 3; 
+    padding-left: 10px;
   }
   
 
 
 /* Style for the fetured albulm */
-
 .albulm-image-container {
   height: 100vh; /* Set the height of each container to be 100% of the viewport height */
   background-size: cover; /* Cover the entire width and height of the container */
   background-position: center; /* Center the background image */
-  background-repeat: no-repeat; /* Do not repeat the background image */
+  background-repeat: no-repeat; 
   position: relative; /* To position the navbar absolutely within this container */
 }
 
@@ -179,18 +282,18 @@ html, body {
     top: 40px; /* This adds some space from the top edge */
     left: 50%; /* Centers the title horizontally */
     transform: translateX(-50%); /* Adjusts horizontal centering taking into account the element's width */
-    color: white; /* Adjust the color as needed */
-    font-size: 4rem; /* Adjust the size as needed */
-    z-index: 2; /* Ensure the text appears above the background image */
-    padding-top: 10px; /* Extra padding from the top, if needed */
-    text-align: center; /* Ensure the text within the div is centered */
+    color: white; 
+    font-size: 4rem; 
+    z-index: 2; 
+    padding-top: 10px; 
+    text-align: center;
   }
   
 
 
 .albums-container {
   display: flex;
-  justify-content: flex-start; /* Align items to the start */
+  justify-content: flex-start; 
   align-items: center;
   overflow-x: hidden; /* Hide horizontal scrollbar */
   scroll-behavior: smooth; /* Smooth scrolling */
@@ -218,18 +321,41 @@ html, body {
 
 .album-info {
   margin-top: 8px; /* Space between image and title */
-  font-size: 1rem; /* Text size */
-  color: #fff; /* Text color, assuming white is desired */
-  text-align: center; /* Center-align the text */
+  font-size: 1rem; 
+  color: #fff; 
+  text-align: center; 
 }
 
-/* Responsive adjustments (if needed) */
+/* albulm title for smaller devices*/
 @media (max-width: 600px) {
-  .album {
-      flex: 0 0 50%; /* Show two albums per view on smaller screens */
+  .album-title {
+      font-size: 10vw; /* Smaller font size */
+      padding: 0 10px; /* Padding on sides */
+      width: 80%; /* Restricting width */
+      margin: 0 auto; /* Centering the title */
+      max-width: 100%; /* Ensuring it doesn't exceed screen width */
+      top: 120px; /* Lowering the title position */
+      transform: translate(-50%, 0); /* Adjusting horizontal centering */
   }
 }
 
+@media (max-width: 600px) {
+  .albums-container {
+      justify-content: center; /* Center the albums on smaller screens */
+  }
+
+  .album {
+      flex: 0 0 50%; /* Show two albums per view on smaller screens */
+      margin: 10px; /* Consistent margin for spacing */
+      box-sizing: border-box;
+  }
+
+  .album img {
+      width: 70%; /* Full width of its container */
+  }
+}
+
+/* Slider controls */
 .slider-controls {
   position: absolute;
   top: 50%;
@@ -260,14 +386,13 @@ html, body {
   top: 50%;
   left: 17%;
   transform: translateY(-50%);
-  width: 65%; /* or the width of the image */
-  height: 50%; /* or the height of the image */
-  padding: 20px; /* adjust as needed for the desired amount of padding */
+  width: 65%; 
+  height: 50%; 
+  padding: 20px; 
 }
 
 
 .buy-ticket-button {
-  /* Other styles */
   position: absolute;
   bottom: 29%;
   left: 70%;
@@ -282,45 +407,25 @@ html, body {
   text-decoration: none;
   transition: background-color 0.3s ease;
 
-  /* Add font family */
   font-family: 'Roboto', sans-serif;
 }
 
 .buy-ticket-button:hover {
   background-color: #0056b3;
 }
-/* drop down list styling*/
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {background-color: #ddd;}
-
 
 
 /* Countdown timer */
 .image-container.with-countdown {
   position: relative;
-  height: 100vh; /* Full viewport height */
-  background-size: cover; /* Cover the entire area */
-  background-position: center; /* Center the background */
+  height: 100vh; 
+  background-size: cover; 
+  background-position: center; 
 }
 
 .image-container.with-countdown .countdown {
   position: absolute;
-  right: 10%; /* Adjust for horizontal positioning */
+  right: 10%; 
   top: 50%; /* Vertical center */
   transform: translateY(-50%); /* Vertical center adjustment */
   display: flex;
@@ -336,7 +441,7 @@ html, body {
 }
 
 .image-container.with-countdown .countdown .number {
-  font-size: 90px; /* Large font size for countdown numbers */
+  font-size: 90px; 
   font-weight: bold;
   color: rgb(17, 17, 19);
 }
@@ -350,27 +455,21 @@ html, body {
 
 
 
-  
-
-
-
-
 /* showcase merch*/
 .merchstore-background {
   background-color: white;
   padding: 20px;
   text-align: center;
-  max-width: 80vw; /* 90% of the viewport width */
+  max-width: 80vw; 
   margin: auto;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 
 .main-content {
-  min-height: 500px; /* Set a minimum height for the main content area */
-  padding: 40px 0; /* Keep existing vertical padding */
-  text-align: center; /* Centers the text */
-  /* Add other styles as needed */
+  min-height: 500px; 
+  padding: 40px 0; 
+  text-align: center; 
 }
 
 @media (max-width: 768px) {
@@ -381,8 +480,8 @@ html, body {
 
 .page-header h1 {
   font-size: 2rem;
-  color: black; /* Adjust the color as needed */
-  margin-bottom: 20px; /* Space below the header */
+  color: black;
+  margin-bottom: 20px; 
 }
 
 
@@ -420,16 +519,15 @@ html, body {
 }
 
 
-
 /*---------------About Page CSS-----------------*/
 /*CSS FOR ABOUT PAGE !! */  /*CSS FOR ABOUT PAGE !! */ /*CSS FOR ABOUT PAGE !! */ 
 
 
 .aboutpage-image-container {
-  height: 100vh; /* Set the height of each container to be 100% of the viewport height */
-  background-size: cover; /* Cover the entire width and height of the container */
-  background-position: center; /* Center the background image */
-  background-repeat: no-repeat; /* Do not repeat the background image */
+  height: 100vh; 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
   position: relative;
   
 }
@@ -437,11 +535,11 @@ html, body {
 /* Styling for the 'ABOUT' text */
 .about-title {
   position: absolute;
-  top: 50%; /* Adjust this value to move vertically */
-  left: 2.5%; /* Adjust this value to move horizontally to the left */
+  top: 50%; 
+  left: 2.5%; 
   transform: translateY(-50%);
-  color: white; /* Example color */
-  font-size: 7.5rem; /* Example font size */
+  color: white; 
+  font-size: 7.5rem; 
   font-weight: bold;
   z-index: 2;
   text-align: left;
@@ -450,15 +548,33 @@ html, body {
 /* Styling for the 'KESHI' text */
 .keshi-title {
   position: absolute;
-  top: 50%; /* Adjust this value to move vertically */
-  right: 10%; /* Adjust this value to move horizontally to the right */
+  top: 50%; /*Note to self: Adjust this value to move vertically */
+  right: 10%; /* Note to self: Adjust this value to move horizontally to the right */
   transform: translateY(-50%);
-  color: rgb(32, 31, 31); /* Example color */
-  font-size: 9rem; /* Example font size */
+  color: rgb(32, 31, 31); 
+  font-size: 9rem; 
   font-weight: bold;
   z-index: 2;
   text-align: right;
 }
+
+/* styling for first page of about page media queries*/
+@media screen and (max-width: 768px) {
+  /* Adjust the 'ABOUT' text for smaller devices */
+  .about-title {
+      font-size: 3.5rem; /* Smaller font size for mobile devices */
+      left: 5%; 
+      top: 30%; 
+  }
+
+  /* Adjust the 'KESHI' text for smaller devices */
+  .keshi-title {
+      font-size: 4rem; 
+      right: 5%; 
+      top: 40%; /
+  }
+}
+
 
 /* Styling for the video section */
 .video-section {
@@ -467,34 +583,68 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Full viewport height */
-  padding: 0 5%; /* Adds padding to the sides */
+  height: 100vh; 
+  padding: 0 5%; 
 }
 
 /* Responsive iframe styling with padding and height adjustment */
 .video-section iframe {
-  width: 90%; /* Adjusted width to allow for padding */
-  height: 85vh; /* Adjusted height, can be set as needed */
+  width: 90%; 
+  height: 85vh; 
   max-width: 90%; /* Ensure it doesn't overflow on smaller screens */
-  max-height: 85vh; /* Adjusted maximum height */
-  box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.1); /* Optional shadow for depth */
+  max-height: 85vh; 
+  box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.1); /*shadows */
+}
+
+/* media queries for video on smalle devices*/
+/* Styling for the video section */
+.video-section {
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  padding: 0 5%; 
+}
+
+/* Responsive iframe styling with padding and height adjustment */
+.video-section iframe {
+  width: 100%; 
+  height: auto; 
+  max-width: 90%; 
+  box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.1);
+  aspect-ratio: 16 / 9; /
+}
+
+/* CSS for Mobile Devices */
+@media screen and (max-width: 768px) {
+  .video-section {
+      height: auto; 
+      padding: 20px; 
+  }
+
+  .video-section iframe {
+      width: 90%; 
+      max-height: 75vh; 
+      aspect-ratio: 16 / 9; 
+  }
 }
 
 
 /* Styling for the KESHI information section */
 .keshi-info {
-  background-color: #b42626; /* Dark red color; adjust the shade as needed */
-  color: white; /* Light text color for readability */
-  padding: 50px 10%; /* Ample padding for content */
-  min-height: 50vh; /* Minimum height, adjust as needed */
-  font-size: 1rem; /* Adjust the font size as needed */
+  background-color: #b42626; 
+  color: white; 
+  padding: 50px 10%; 
+  min-height: 50vh; 
+  font-size: 1rem; 
   line-height: 1.6; /* Good for paragraph readability */
 }
 
 
 .keshi-info p {
-  margin-bottom: 20px; /* Space between paragraphs */
-  /* Additional paragraph styles can go here */
+  margin-bottom: 20px; 
 }
 
 
@@ -505,13 +655,12 @@ html, body {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  width: 100%; /* Full width of the container */
-  height: 100vh; /* Full height of the viewport */
+  width: 100%; 
+  height: 100vh; 
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 
 
 
@@ -520,27 +669,26 @@ html, body {
 
 /*merch bg*/
 .background-image-div {
-  background-image: url('images/merchbg.jpg'); /* Update this path if your image is in a different folder */
+  background-image: url('images/merchbg.jpg'); 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh; /* Full height of the viewport */
-  width: 100%; /* Full width */
+  height: 100vh; 
+  width: 100%; 
   position:relative;
 }
 
 .featured-container {
-  text-align: left; /* Align the container's text to the left */
-  padding-left: 40px; /* Add padding to align with the grid below */
+  text-align: left; 
+  padding-left: 40px; 
 }
 
 .featured-title {
   font-size: 4rem; /* Increase the font size for visibility */
-  font-family: 'Arial', sans-serif; /* Change the font, or choose another one */
-  color: #000; /* Black color for the title */
+  font-family: 'Arial', sans-serif; 
+  color: #000; 
   padding: 20px 0; /* Add some space around the title */
-  /* If you want to move the title around independently */
-  position: relative; /* You can use 'absolute' if you want it to be positioned absolutely within '.white-background-page' */
+  position: relative; 
   left: 0; /* Adjust this value to move the title left or right */
   top: -30px; /* Adjust this value to move the title up or down */
 }
@@ -593,8 +741,13 @@ html, body {
   margin-right: 0;
 }
 
+
 /* Responsive adjustments for smaller screens */
 @media screen and (max-width: 768px) {
+  .featured-title {
+    font-size: 2rem; /* Reduce the font size for smaller screens */
+    padding: 0 10px; /* Add padding to prevent text from touching the sides */
+  }
   .merch-item {
     width: calc(50% - 30px); /* Adjust for two items per row on smaller screens */
     margin-right: 30px;
@@ -636,11 +789,57 @@ html, body {
 }
 
 .rectangle img {
-  max-width: 90%; /* Image fills most of the rectangle width */
-  height: auto; /* Maintain aspect ratio */
-  object-fit: contain; /* Ensures the image fits within the rectangle */
+  max-width: 90%; 
+  height: auto; 
+  object-fit: contain; 
 }
 
+/*testing for cart*/
+.add-to-cart-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cart-container {
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  margin-top: 20px;
+  width: 100%; 
+  box-sizing: border-box;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 100%; /* Ensure each item uses full width of the container */
+}
+
+.cart-item-img {
+  width: 50px; 
+  height: 50px;
+  margin-right: 10px;
+}
+
+.quantity {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.remove-item {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
 
 
 
@@ -651,11 +850,11 @@ html, body {
 /*CSS FOR MEDIA PAGE !! */  /*CSS FOR MEDIA PAGE !! */ /*CSS FOR MEDIA PAGE !! */ 
 
 .media-image-container {
-  height: 100vh; /* Set the height of each container to be 100% of the viewport height */
-  background-size: cover; /* Cover the entire width and height of the container */
-  background-position: center; /* Center the background image */
-  background-repeat: no-repeat; /* Do not repeat the background image */
-  position: relative; /* To position the navbar absolutely within this container */
+  height: 100vh; 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  position: relative; 
 }
 
 .video-grid {
@@ -663,12 +862,11 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 50%; /* Maximum width of the video grid */
-  margin: auto; /* Center the grid on the page */
-  padding-top: 120px; /* Added padding at the top */
+  max-width: 50%; 
+  margin: auto; 
+  padding-top: 120px; 
 }
 
-/* Rest of your CSS for .video-row and .video */
 
 
 .video-row {
@@ -678,10 +876,29 @@ html, body {
 }
 
 .video {
-  width: 320px;  /* Adjust the width as needed */
-  height: 180px; /* Adjust the height as needed */
+  width: 320px;  
+  height: 180px; 
   margin: 0 10px;
 }
 
+/* smallerr device css*/
 
+@media screen and (max-width: 768px) {
+  .video-grid {
+      max-width: 100%; /* Allow the grid to take the full width */
+      padding-top: 60px; /* Adjust padding for smaller screens */
+  }
+
+  .video-row {
+      flex-direction: column; /* Stack videos vertically */
+      align-items: center; /* Align videos in the center */
+      margin-bottom: 40px; /* Increase spacing between videos */
+  }
+
+  .video {
+      width: 90%; /* Increase width to better fit mobile screens */
+      height: auto; /* Adjust height automatically */
+      margin: 10px 0; /* Adjust margin for vertical stacking */
+  }
+}
 
