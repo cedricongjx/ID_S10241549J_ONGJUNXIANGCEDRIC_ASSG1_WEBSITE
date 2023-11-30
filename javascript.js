@@ -1,9 +1,14 @@
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById('hamburger').addEventListener('click', function() {
-        document.getElementById('nav-links').classList.toggle('show');
-    });
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
 
-    // Slider functionality - ensure elements with these IDs exist
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('show');
+        });
+    }
+
+    // Slider functionality
     const albumsContainer = document.getElementById('albumsContainer');
     const slideLeft = document.getElementById('slideLeft');
     const slideRight = document.getElementById('slideRight');
@@ -28,17 +33,22 @@ document.addEventListener("DOMContentLoaded", function() {
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
         
-        document.getElementById("days").innerHTML = days;
-        document.getElementById("hours").innerHTML = hours;
-        document.getElementById("minutes").innerHTML = minutes;
-        document.getElementById("seconds").innerHTML = seconds;
+        var daysElement = document.getElementById("days");
+        var hoursElement = document.getElementById("hours");
+        var minutesElement = document.getElementById("minutes");
+        var secondsElement = document.getElementById("seconds");
+
+        if (daysElement) daysElement.innerHTML = days;
+        if (hoursElement) hoursElement.innerHTML = hours;
+        if (minutesElement) minutesElement.innerHTML = minutes;
+        if (secondsElement) secondsElement.innerHTML = seconds;
         
         if (distance < 0) {
             clearInterval(countdownTimer);
-            document.getElementById("days").innerHTML = "EXPIRED";
-            document.getElementById("hours").innerHTML = "";
-            document.getElementById("minutes").innerHTML = "";
-            document.getElementById("seconds").innerHTML = "";
+            if (daysElement) daysElement.innerHTML = "EXPIRED";
+            if (hoursElement) hoursElement.innerHTML = "";
+            if (minutesElement) minutesElement.innerHTML = "";
+            if (secondsElement) secondsElement.innerHTML = "";
         }
     }, 1000);
 
@@ -94,9 +104,45 @@ document.addEventListener("DOMContentLoaded", function() {
         button.addEventListener('click', () => {
             const itemName = button.getAttribute('data-name');
             const itemPrice = button.getAttribute('data-price');
-            const itemImg = button.closest('.merch-item').querySelector('img').src; // Assuming the image is within the merch-item
+            const itemImg = button.closest('.merch-item').querySelector('img').src;
             addToCart(itemName, itemPrice, itemImg);
         });
     });
+
+// Video slider functionality
+var videos = document.querySelectorAll('.video-wrapper video');
+var currentVideoIndex = 0;
+var leftArrow = document.querySelector('.left-arrow');
+var rightArrow = document.querySelector('.right-arrow');
+
+function updateVideoDisplay() {
+    videos.forEach(function(video, index) {
+        video.style.display = index === currentVideoIndex ? 'block' : 'none';
+    });
+}
+
+if (leftArrow) {
+    leftArrow.addEventListener('click', function() {
+        if (currentVideoIndex > 0) {
+            currentVideoIndex--;
+            updateVideoDisplay();
+        }
+    });
+} else {
+    console.error("Left arrow element not found");
+}
+
+if (rightArrow) {
+    rightArrow.addEventListener('click', function() {
+        if (currentVideoIndex < videos.length - 1) {
+            currentVideoIndex++;
+            updateVideoDisplay();
+        }
+    });
+} else {
+    console.error("Right arrow element not found");
+}
+
+
 });
 
