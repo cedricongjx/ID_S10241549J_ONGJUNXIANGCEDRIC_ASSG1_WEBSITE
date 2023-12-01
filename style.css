@@ -378,7 +378,7 @@ html, body {
 
 /*Countdown Page for concert*/
 .centered-image {
-  background-image: url('images/keshi_hellheaven_concert_singa_1664796505_4d6a6ca1_progressive.jpg');
+  background-image: url('images/keshi_hellheaven_concert.jpg');
   background-size: contain; /* or 'cover' depending on how you want to handle the image */
   background-repeat: no-repeat;
   background-position: left center;
