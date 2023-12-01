@@ -451,6 +451,34 @@ html, body {
   color: #c4b6b6;
 }
 
+/* Media Query for Smaller Devices */
+@media screen and (max-width: 768px) { /* Adjust max-width as needed for your breakpoint */
+  
+  /* Hide Countdown Timer */
+  .image-container.with-countdown .countdown {
+    display: none;
+  }
+
+  /* Adjust Background Image */
+  .centered-image {
+    background-size: contain; /* Ensure full image is visible */
+    width: calc(100% - 40px); /* Full width minus padding */
+    height: calc(100% - 40px); /* Full height minus padding, maintaining square aspect ratio */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the image */
+    padding: 20px; /* Add padding around the image */
+    box-sizing: border-box; /* Include padding in width/height calculations */
+  }
+
+  /* Adjust Buy Ticket Button */
+  .buy-ticket-button {
+    bottom: 10%; /* Adjust position as needed */
+    left: 50%; /* Center the button */
+    font-size: 1.5rem; /* Adjust font size for smaller screens */
+  }
+}
+
 
 
 
