@@ -109,40 +109,36 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-// Video slider functionality
-var videos = document.querySelectorAll('.video-wrapper video');
-var currentVideoIndex = 0;
-var leftArrow = document.querySelector('.left-arrow');
-var rightArrow = document.querySelector('.right-arrow');
+    var videos = document.querySelectorAll('.video-wrapper video');
+    var currentVideoIndex = 0;
+    var leftArrow = document.querySelector('.left-arrow');
+    var rightArrow = document.querySelector('.right-arrow');
 
-function updateVideoDisplay() {
-    videos.forEach(function(video, index) {
-        video.style.display = index === currentVideoIndex ? 'block' : 'none';
-    });
-}
+    function updateVideoDisplay() {
+        videos.forEach(function(video, index) {
+            video.style.display = index === currentVideoIndex ? 'block' : 'none';
+        });
+    }
 
-if (leftArrow) {
-    leftArrow.addEventListener('click', function() {
-        if (currentVideoIndex > 0) {
-            currentVideoIndex--;
-            updateVideoDisplay();
-        }
-    });
-} else {
-    console.error("Left arrow element not found");
-}
+    if (leftArrow) {
+        leftArrow.addEventListener('click', function() {
+            if (currentVideoIndex > 0) {
+                currentVideoIndex--;
+                updateVideoDisplay();
+            }
+        });
+    } else {
+        console.error("Left arrow element not found");
+    }
 
-if (rightArrow) {
-    rightArrow.addEventListener('click', function() {
-        if (currentVideoIndex < videos.length - 1) {
-            currentVideoIndex++;
-            updateVideoDisplay();
-        }
-    });
-} else {
-    console.error("Right arrow element not found");
-}
-
-
+    if (rightArrow) {
+        rightArrow.addEventListener('click', function() {
+            if (currentVideoIndex < videos.length - 1) {
+                currentVideoIndex++;
+                updateVideoDisplay();
+            }
+        });
+    } else {
+        console.error("Right arrow element not found");
+    }
 });
-
